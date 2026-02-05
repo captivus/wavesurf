@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Run both Python unit tests and Cypress browser tests.
+# Run Python unit tests and/or Playwright browser tests.
 #
 # Usage:
 #   bash scripts/run_tests.sh          # run all tests
-#   bash scripts/run_tests.sh python   # Python only
-#   bash scripts/run_tests.sh cypress  # Cypress only
+#   bash scripts/run_tests.sh python   # Python unit tests only
+#   bash scripts/run_tests.sh e2e      # Playwright browser tests only
 
 set -euo pipefail
 
@@ -16,16 +16,13 @@ MODE="${1:-all}"
 
 run_python() {
     echo "=== Running Python unit tests ==="
-    uv run pytest tests/ --verbose
+    uv run pytest tests/unit/ --verbose
     echo ""
 }
 
-run_cypress() {
-    echo "=== Generating Cypress fixtures ==="
-    uv run python cypress/fixtures/generate_fixtures.py
-
-    echo "=== Running Cypress browser tests ==="
-    npm run test:e2e
+run_e2e() {
+    echo "=== Running Playwright browser tests ==="
+    uv run pytest tests/e2e/ --verbose
     echo ""
 }
 
@@ -33,15 +30,15 @@ case "$MODE" in
     python)
         run_python
         ;;
-    cypress)
-        run_cypress
+    e2e)
+        run_e2e
         ;;
     all)
         run_python
-        run_cypress
+        run_e2e
         ;;
     *)
-        echo "Usage: $0 [python|cypress|all]"
+        echo "Usage: $0 [python|e2e|all]"
         exit 1
         ;;
 esac

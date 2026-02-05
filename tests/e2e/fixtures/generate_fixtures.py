@@ -1,6 +1,6 @@
-"""Generate HTML fixture files for Cypress e2e tests.
+"""Generate HTML fixture files for Playwright e2e tests.
 
-Run with: uv run python cypress/fixtures/generate_fixtures.py
+Run with: uv run python tests/e2e/fixtures/generate_fixtures.py
 """
 
 from __future__ import annotations
@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 # Ensure the project root is importable when running the script directly.
-_PROJECT_ROOT = str(Path(__file__).resolve().parent.parent.parent)
+_PROJECT_ROOT = str(Path(__file__).resolve().parent.parent.parent.parent)
 if _PROJECT_ROOT not in sys.path:
     sys.path.insert(0, _PROJECT_ROOT)
 
@@ -17,7 +17,6 @@ import numpy as np
 
 from wavesurf import WaveSurfer, compare_audio
 from wavesurf._controls import Controls
-from wavesurf._events import EventHandler
 from wavesurf._theme import DARK, LIGHT
 
 FIXTURES_DIR = Path(__file__).parent
@@ -109,7 +108,7 @@ def generate_all_controls() -> None:
 
 
 if __name__ == "__main__":
-    print("Generating Cypress fixtures...")
+    print("Generating e2e test fixtures...")
     generate_basic_dark()
     generate_basic_light()
     generate_custom_options()

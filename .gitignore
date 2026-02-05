@@ -215,10 +215,6 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# Node.js / Cypress
-node_modules/
-package-lock.json
-cypress/fixtures/*.html
-cypress/screenshots/
-cypress/videos/
-cypress/downloads/
+# Playwright / E2E
+tests/e2e/fixtures/*.html
+snapshot_failures/

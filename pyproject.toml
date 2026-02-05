@@ -37,6 +37,8 @@ torch = [
 dev = [
     "pytest>=9.0.2",
     "pytest-cov>=7.0.0",
+    "pytest-playwright>=0.7.2",
+    "pytest-playwright-visual-snapshot>=0.5.1",
 ]
 
 [build-system]
@@ -47,6 +49,9 @@ build-backend = "hatchling.build"
 Homepage = "https://github.com/captivus/wavesurf"
 Repository = "https://github.com/captivus/wavesurf"
 Issues = "https://github.com/captivus/wavesurf/issues"
+
+[tool.pytest.ini_options]
+addopts = "--browser chromium"
 
 [tool.hatch.build.targets.wheel]
 packages = ["wavesurf"]
