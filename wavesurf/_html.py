@@ -21,6 +21,14 @@ if TYPE_CHECKING:
 # Load wavesurfer.min.js once at import time.
 _WAVESURFER_JS = (Path(__file__).parent / "wavesurfer.min.js").read_text()
 
+# Load bundled plugin JS files (one per supported plugin).
+_PLUGINS_DIR = Path(__file__).parent / "plugins"
+_PLUGIN_JS: dict[str, str] = {}
+for _name in ("timeline", "minimap", "regions", "spectrogram"):
+    _path = _PLUGINS_DIR / f"{_name}.min.js"
+    if _path.exists():
+        _PLUGIN_JS[_name] = _path.read_text()
+
 
 def _build_title_html(title: str, theme: Theme) -> str:
     """Generate the title block above the waveform."""
@@ -180,18 +188,45 @@ def build_player_html(
     return f"{container}\n<script>\n{js_block}\n</script>"
 
 
-def wrap_in_iframe(body_html: str, height: int) -> str:
+def wrap_in_iframe(
+    body_html: str,
+    height: int,
+    plugin_names: list[str] | None = None,
+) -> str:
     """Wrap HTML content in a self-contained iframe via srcdoc.
 
     JupyterLab strips ``<script>`` tags from IPython.display.HTML output.
     An iframe with ``srcdoc`` has its own document context where scripts
     execute normally.
+
+    Parameters
+    ----------
+    body_html:
+        The HTML content to embed inside the iframe body.
+    height:
+        Pixel height of the iframe.
+    plugin_names:
+        Optional list of plugin names (lowercase) whose bundled JS should
+        be injected into the iframe head.  Each plugin script is followed
+        by a global alias so that e.g. ``Timeline.create()`` works.
     """
+    # Build plugin script tags (each plugin + global alias shim).
+    plugin_scripts = ""
+    for name in dict.fromkeys(plugin_names or []):
+        js = _PLUGIN_JS.get(name)
+        if js:
+            capitalized = name.capitalize()
+            plugin_scripts += (
+                f"<script>{js}</script>"
+                f"<script>var {capitalized} = WaveSurfer.{capitalized};</script>"
+            )
+
     full_page = (
         "<!DOCTYPE html>"
         "<html><head>"
         "<style>body { margin: 0; background: transparent; }</style>"
         f"<script>{_WAVESURFER_JS}</script>"
+        f"{plugin_scripts}"
         "</head><body>"
         f"{body_html}"
         "</body></html>"
@@ -209,19 +244,58 @@ def estimate_player_height(
     title: str | None,
     theme: Theme,
     controls: Controls,
+    options: WaveSurferOptions | None = None,
+    plugins: list[PluginConfig] | None = None,
 ) -> int:
-    """Estimate the pixel height of a single player card for iframe sizing."""
+    """Estimate the pixel height of a single player card for iframe sizing.
+
+    Parameters
+    ----------
+    title:
+        Player title (adds height when present).
+    theme:
+        Visual theme (provides default waveform height).
+    controls:
+        Control configuration (adds height when visible).
+    options:
+        Merged wavesurfer options — used for the actual waveform ``height``
+        which may differ from the theme default.
+    plugins:
+        Plugin list — plugins like Timeline and Spectrogram add vertical
+        space below the waveform.
+    """
     from wavesurf._controls import controls_height as _controls_height
 
     # Padding top + bottom (approximation from "20px 24px" → 40px vertical)
     padding_v = 40
     # Title block
     title_h = 28 + 14 if title else 0  # font ~14px + margin 14px
-    # Waveform
-    waveform_h = theme.height if isinstance(theme.height, int) and theme.height else 80
+
+    # Waveform height: prefer explicit options over theme default.
+    waveform_h = 80
+    if options and isinstance(options.height, int) and options.height:
+        waveform_h = options.height
+    elif isinstance(theme.height, int) and theme.height:
+        waveform_h = theme.height
+
     # Controls
     ctrl_h = _controls_height(controls=controls)
-    # Card margin
-    margin = 8
 
-    return padding_v + title_h + waveform_h + ctrl_h + margin
+    # Plugin heights — each visual plugin adds vertical space.
+    _PLUGIN_DEFAULT_HEIGHTS = {
+        "timeline": 20,
+        "minimap": 20,
+        "spectrogram": 128,
+    }
+    plugin_h = 0
+    if plugins:
+        for plugin in plugins:
+            name = plugin.name.lower()
+            default_h = _PLUGIN_DEFAULT_HEIGHTS.get(name, 0)
+            if default_h:
+                plugin_h += plugin.options.get("height", default_h)
+
+    # Buffer for borders, sub-pixel rounding, and plugin chrome.
+    margin = 16
+
+    return padding_v + title_h + waveform_h + ctrl_h + plugin_h + margin

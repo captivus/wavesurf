@@ -59,6 +59,8 @@ def compare(
             title=player.title,
             theme=player.theme,
             controls=player.controls,
+            options=options,
+            plugins=player.plugins or None,
         )
         if h > max_card_height:
             max_card_height = h
@@ -75,8 +77,20 @@ def compare(
         grid_style = "display: grid; gap: 8px;"
         total_height = len(cards) * max_card_height
 
+    # Collect unique plugin names across all players.
+    plugin_names: list[str] = []
+    for player in players:
+        for plugin in player.plugins:
+            name = plugin.name.lower()
+            if name not in plugin_names:
+                plugin_names.append(name)
+
     body = f'<div style="{grid_style}">' + "".join(cards) + "</div>"
-    iframe = wrap_in_iframe(body_html=body, height=total_height)
+    iframe = wrap_in_iframe(
+        body_html=body,
+        height=total_height,
+        plugin_names=plugin_names or None,
+    )
     return _CompareResult(html=iframe)
 
 

@@ -106,8 +106,17 @@ class WaveSurfer:
             title=self.title,
             theme=self.theme,
             controls=self.controls,
+            options=options,
+            plugins=self.plugins or None,
         )
-        return wrap_in_iframe(body_html=player, height=height)
+        plugin_names = (
+            [p.name.lower() for p in self.plugins] if self.plugins else None
+        )
+        return wrap_in_iframe(
+            body_html=player,
+            height=height,
+            plugin_names=plugin_names,
+        )
 
     def _repr_html_(self) -> str:
         """IPython rich display — auto-renders in Jupyter."""
