@@ -19,7 +19,7 @@ A complete Python wrapper around [wavesurfer.js](https://wavesurfer.xyz/) for Ju
 
 ## Examples
 
-Interactive HTML examples demonstrating all major features:
+Interactive HTML examples demonstrating all major features are available [here](examples/index.html) (open in browser for full interactivity):
 
 | Example | Description |
 |---------|-------------|
