@@ -2,13 +2,13 @@
 
 describe("Custom Options", () => {
   it("loads the custom options page without errors", () => {
-    cy.visit("/custom_options.html");
+    cy.visit("/cypress/fixtures/custom_options.html");
     cy.get("iframe").should("exist");
     cy.get("iframe").its("0.contentDocument.body").should("not.be.empty");
   });
 
   it("renders the all-controls page with volume and rate selectors", () => {
-    cy.visit("/all_controls.html");
+    cy.visit("/cypress/fixtures/all_controls.html");
     cy.get("iframe")
       .its("0.contentDocument")
       .then((doc) => {
@@ -24,7 +24,7 @@ describe("Custom Options", () => {
   });
 
   it("visual regression — dark theme", () => {
-    cy.visit("/basic_dark.html");
+    cy.visit("/cypress/fixtures/basic_dark.html");
     // Allow time for waveform to render
     cy.wait(1000);
     cy.matchImageSnapshot("dark-theme");

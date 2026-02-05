@@ -1,8 +1,45 @@
 # wavesurf
 
-Interactive audio waveform players for Jupyter notebooks, powered by [wavesurfer.js](https://wavesurfer.xyz/).
+A complete Python wrapper around [wavesurfer.js](https://wavesurfer.xyz/) for Jupyter notebooks.
 
-wavesurf wraps the full wavesurfer.js API in a Pythonic interface. Pass a numpy array, torch tensor, file path, or URL and get a fully interactive audio player rendered inline — no frontend code required.
+[wavesurfer.js](https://wavesurfer.xyz/) is an open-source audio visualization library for building interactive, customizable waveform players. wavesurf brings its full power to Python -- pass a numpy array, torch tensor, file path, or URL and get a fully-featured audio player inline, complete with themes, plugins, custom controls, and event handlers. No JavaScript required.
+
+## Gallery
+
+| | |
+|:---:|:---:|
+| [![Basic Player](docs/screenshots/basic.png)](examples/basic.html) | [![Bar-Style Waveforms](docs/screenshots/bars.png)](examples/bars.html) |
+| [Basic Player](examples/basic.html) | [Bar-Style Waveforms](examples/bars.html) |
+| [![Gradient Colors](docs/screenshots/gradients.png)](examples/gradients.html) | [![Timeline Plugin](docs/screenshots/timeline.png)](examples/timeline.html) |
+| [Gradient Colors](examples/gradients.html) | [Timeline Plugin](examples/timeline.html) |
+| [![Player Controls](docs/screenshots/controls.png)](examples/controls.html) | [![Custom Theme](docs/screenshots/custom_theme.png)](examples/custom_theme.html) |
+| [Player Controls](examples/controls.html) | [Custom Theme](examples/custom_theme.html) |
+| [![Grid Layout](docs/screenshots/layout.png)](examples/layout.html) | [![Built-in Themes](docs/screenshots/themes.png)](examples/themes.html) |
+| [Grid Layout](examples/layout.html) | [Built-in Themes](examples/themes.html) |
+
+## Examples
+
+Interactive HTML examples demonstrating all major features:
+
+| Example | Description |
+|---------|-------------|
+| [Basic Player](examples/basic.html) | Simplest player with default DARK theme |
+| [Bar-Style Waveforms](examples/bars.html) | Customize bar width, gap, and radius |
+| [Gradient Colors](examples/gradients.html) | Gradient wave and progress colors |
+| [Timeline Plugin](examples/timeline.html) | Time markers below the waveform |
+| [Minimap Plugin](examples/minimap.html) | Miniature waveform overview |
+| [Spectrogram Plugin](examples/spectrogram.html) | Frequency spectrum visualization |
+| [Regions Plugin](examples/regions.html) | Highlight and annotate audio segments |
+| [Player Controls](examples/controls.html) | Play, time, volume, and rate controls |
+| [Grid Layout](examples/layout.html) | Multi-player comparison grids |
+| [Custom Theme](examples/custom_theme.html) | Fully customized visual theme |
+| [Built-in Themes](examples/themes.html) | DARK and LIGHT themes side by side |
+
+Regenerate examples locally:
+
+```bash
+uv run python examples/generate_examples.py
+```
 
 ## Features
 
@@ -411,7 +448,7 @@ WaveSurfer(
 
 wavesurf uses two test layers:
 
-### Python Unit Tests (88 tests)
+### Python Unit Tests (103 tests)
 
 ```bash
 uv run pytest tests/ --verbose
@@ -426,7 +463,7 @@ npm install
 npm run test:e2e
 ```
 
-Verifies waveform rendering, playback controls, visual regression across themes, and comparison grid layouts in a real browser.
+Verifies waveform rendering, playback controls, visual regression across themes, comparison grid layouts, and all example pages (DOM structure + visual regression) in a real browser.
 
 ### Both Layers
 

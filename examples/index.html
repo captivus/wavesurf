@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>wavesurf examples</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0d1117;
+      color: rgba(255, 255, 255, 0.85);
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      padding: 40px 24px;
+      min-height: 100vh;
+    }
+    .container { max-width: 800px; margin: 0 auto; }
+    h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; }
+    .subtitle {
+      font-size: 0.95rem; color: rgba(255,255,255,0.5);
+      margin-bottom: 40px; line-height: 1.5;
+    }
+    .subtitle a { color: #6c63ff; text-decoration: none; }
+    .subtitle a:hover { text-decoration: underline; }
+    .grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .card {
+      display: block; text-decoration: none; color: inherit;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px; padding: 20px;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .card:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(108, 99, 255, 0.3);
+    }
+    .card-title {
+      font-size: 0.95rem; font-weight: 600; margin-bottom: 6px;
+      color: rgba(255,255,255,0.9);
+    }
+    .card-desc {
+      font-size: 0.8rem; color: rgba(255,255,255,0.45); line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>wavesurf examples</h1>
+    <p class="subtitle">
+      Interactive examples for
+      <a href="https://github.com/captivus/wavesurf">wavesurf</a>
+      — a Python wrapper around
+      <a href="https://wavesurfer.xyz/">wavesurfer.js</a>
+      for Jupyter notebooks.
+    </p>
+    <div class="grid">
+    <a href="basic.html" class="card"><div class="card-title">Basic Player</div><div class="card-desc">Simplest player with default DARK theme</div></a>
+    <a href="bars.html" class="card"><div class="card-title">Bar-Style Waveforms</div><div class="card-desc">Customize bar width, gap, and radius</div></a>
+    <a href="gradients.html" class="card"><div class="card-title">Gradient Colors</div><div class="card-desc">Gradient wave and progress colors</div></a>
+    <a href="timeline.html" class="card"><div class="card-title">Timeline Plugin</div><div class="card-desc">Time markers below the waveform</div></a>
+    <a href="minimap.html" class="card"><div class="card-title">Minimap Plugin</div><div class="card-desc">Miniature waveform overview</div></a>
+    <a href="spectrogram.html" class="card"><div class="card-title">Spectrogram Plugin</div><div class="card-desc">Frequency spectrum visualization</div></a>
+    <a href="regions.html" class="card"><div class="card-title">Regions Plugin</div><div class="card-desc">Highlight and annotate audio segments</div></a>
+    <a href="controls.html" class="card"><div class="card-title">Player Controls</div><div class="card-desc">Play, time, volume, and rate controls</div></a>
+    <a href="layout.html" class="card"><div class="card-title">Grid Layout</div><div class="card-desc">Multi-player comparison grids</div></a>
+    <a href="custom_theme.html" class="card"><div class="card-title">Custom Theme</div><div class="card-desc">Fully customized visual theme</div></a>
+    <a href="themes.html" class="card"><div class="card-title">Built-in Themes</div><div class="card-desc">DARK and LIGHT themes side by side</div></a>
+    </div>
+  </div>
+</body>
+</html>

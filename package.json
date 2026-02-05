@@ -3,8 +3,8 @@
   "private": true,
   "description": "Cypress browser tests for wavesurf",
   "scripts": {
-    "generate-fixtures": "uv run python cypress/fixtures/generate_fixtures.py",
-    "serve-fixtures": "npx http-server cypress/fixtures --port 8765 --silent",
+    "generate-fixtures": "uv run python cypress/fixtures/generate_fixtures.py && uv run python examples/generate_examples.py",
+    "serve-fixtures": "npx http-server . --port 8765 --silent",
     "cypress:open": "npx cypress open",
     "cypress:run": "npx cypress run",
     "test:e2e": "npm run generate-fixtures && npx start-server-and-test serve-fixtures http://localhost:8765 cypress:run"

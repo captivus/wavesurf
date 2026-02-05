@@ -2,7 +2,7 @@
 
 describe("Waveform Rendering", () => {
   it("renders a canvas inside the iframe (dark theme)", () => {
-    cy.visit("/basic_dark.html");
+    cy.visit("/cypress/fixtures/basic_dark.html");
     cy.get("iframe").should("exist");
     cy.get("iframe").its("0.contentDocument.body").should("not.be.empty");
     cy.get("iframe")
@@ -14,7 +14,7 @@ describe("Waveform Rendering", () => {
   });
 
   it("renders a canvas inside the iframe (light theme)", () => {
-    cy.visit("/basic_light.html");
+    cy.visit("/cypress/fixtures/basic_light.html");
     cy.get("iframe").should("exist");
     cy.get("iframe")
       .its("0.contentDocument")
@@ -25,7 +25,7 @@ describe("Waveform Rendering", () => {
   });
 
   it("contains correct element IDs", () => {
-    cy.visit("/basic_dark.html");
+    cy.visit("/cypress/fixtures/basic_dark.html");
     cy.get("iframe")
       .its("0.contentDocument")
       .then((doc) => {

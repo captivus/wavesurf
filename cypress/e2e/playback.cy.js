@@ -2,7 +2,7 @@
 
 describe("Playback Controls", () => {
   beforeEach(() => {
-    cy.visit("/basic_dark.html");
+    cy.visit("/cypress/fixtures/basic_dark.html");
     // Wait for iframe to load
     cy.get("iframe").its("0.contentDocument.body").should("not.be.empty");
   });

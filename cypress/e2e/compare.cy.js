@@ -2,7 +2,7 @@
 
 describe("Compare Grid Layout", () => {
   beforeEach(() => {
-    cy.visit("/compare_grid.html");
+    cy.visit("/cypress/fixtures/compare_grid.html");
     cy.get("iframe").should("exist");
     cy.get("iframe").its("0.contentDocument.body").should("not.be.empty");
   });
