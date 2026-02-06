@@ -1,6 +1,6 @@
 [project]
 name = "wavesurf"
-version = "0.1.0"
+version = "0.1.1"
 description = "Interactive audio waveform players for Jupyter notebooks, powered by wavesurfer.js"
 authors = [
     { name = "captivus", email = "366332+captivus@users.noreply.github.com" },
