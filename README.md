@@ -2,7 +2,7 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/wavesurf)](https://pypi.org/project/wavesurf/)
 [![Python versions](https://img.shields.io/pypi/pyversions/wavesurf)](https://pypi.org/project/wavesurf/)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/captivus/wavesurf/blob/master/LICENSE)
 [![PyPI downloads](https://img.shields.io/pypi/dm/wavesurf)](https://pypi.org/project/wavesurf/)
 [![Publish](https://github.com/captivus/wavesurf/actions/workflows/publish.yml/badge.svg)](https://github.com/captivus/wavesurf/actions/workflows/publish.yml)
 
@@ -10,38 +10,38 @@ A complete Python wrapper of [wavesurfer.js](https://wavesurfer.xyz/).
 
 [wavesurfer.js](https://wavesurfer.xyz/) is an open-source audio visualization library for building interactive, customizable waveform players. wavesurf brings its full power to Python -- pass a numpy array, torch tensor, file path, or URL and get a fully-featured audio player inline, complete with themes, plugins, custom controls, and event handlers. No JavaScript required.
 
-This implementation also includes widgets for use in Jupyter notebooks, and a [detailed developer guide](docs/jupyter-widgets-dev-guide.ipynb) for implementing your own sexy Jupyter widgets using the library!
+This implementation also includes widgets for use in Jupyter notebooks, and a [detailed developer guide](https://github.com/captivus/wavesurf/blob/master/docs/jupyter-widgets-dev-guide.ipynb) for implementing your own sexy Jupyter widgets using the library!
 
 ## Gallery
 
 | | |
 |:---:|:---:|
-| [![Basic Player](docs/screenshots/basic.png)](examples/basic.html) | [![Bar-Style Waveforms](docs/screenshots/bars.png)](examples/bars.html) |
-| [Basic Player](examples/basic.html) | [Bar-Style Waveforms](examples/bars.html) |
-| [![Gradient Colors](docs/screenshots/gradients.png)](examples/gradients.html) | [![Timeline Plugin](docs/screenshots/timeline.png)](examples/timeline.html) |
-| [Gradient Colors](examples/gradients.html) | [Timeline Plugin](examples/timeline.html) |
-| [![Player Controls](docs/screenshots/controls.png)](examples/controls.html) | [![Custom Theme](docs/screenshots/custom_theme.png)](examples/custom_theme.html) |
-| [Player Controls](examples/controls.html) | [Custom Theme](examples/custom_theme.html) |
-| [![Grid Layout](docs/screenshots/layout.png)](examples/layout.html) | [![Built-in Themes](docs/screenshots/themes.png)](examples/themes.html) |
-| [Grid Layout](examples/layout.html) | [Built-in Themes](examples/themes.html) |
+| [![Basic Player](https://raw.githubusercontent.com/captivus/wavesurf/master/docs/screenshots/basic.png)](https://captivus.github.io/wavesurf/examples/basic.html) | [![Bar-Style Waveforms](https://raw.githubusercontent.com/captivus/wavesurf/master/docs/screenshots/bars.png)](https://captivus.github.io/wavesurf/examples/bars.html) |
+| [Basic Player](https://captivus.github.io/wavesurf/examples/basic.html) | [Bar-Style Waveforms](https://captivus.github.io/wavesurf/examples/bars.html) |
+| [![Gradient Colors](https://raw.githubusercontent.com/captivus/wavesurf/master/docs/screenshots/gradients.png)](https://captivus.github.io/wavesurf/examples/gradients.html) | [![Timeline Plugin](https://raw.githubusercontent.com/captivus/wavesurf/master/docs/screenshots/timeline.png)](https://captivus.github.io/wavesurf/examples/timeline.html) |
+| [Gradient Colors](https://captivus.github.io/wavesurf/examples/gradients.html) | [Timeline Plugin](https://captivus.github.io/wavesurf/examples/timeline.html) |
+| [![Player Controls](https://raw.githubusercontent.com/captivus/wavesurf/master/docs/screenshots/controls.png)](https://captivus.github.io/wavesurf/examples/controls.html) | [![Custom Theme](https://raw.githubusercontent.com/captivus/wavesurf/master/docs/screenshots/custom_theme.png)](https://captivus.github.io/wavesurf/examples/custom_theme.html) |
+| [Player Controls](https://captivus.github.io/wavesurf/examples/controls.html) | [Custom Theme](https://captivus.github.io/wavesurf/examples/custom_theme.html) |
+| [![Grid Layout](https://raw.githubusercontent.com/captivus/wavesurf/master/docs/screenshots/layout.png)](https://captivus.github.io/wavesurf/examples/layout.html) | [![Built-in Themes](https://raw.githubusercontent.com/captivus/wavesurf/master/docs/screenshots/themes.png)](https://captivus.github.io/wavesurf/examples/themes.html) |
+| [Grid Layout](https://captivus.github.io/wavesurf/examples/layout.html) | [Built-in Themes](https://captivus.github.io/wavesurf/examples/themes.html) |
 
 ## Examples
 
-Interactive HTML examples demonstrating all major features are available [here](examples/index.html) (open in browser for full interactivity):
+Interactive HTML examples demonstrating all major features are available [here](https://captivus.github.io/wavesurf/examples/index.html) (open in browser for full interactivity):
 
 | Example | Description |
 |---------|-------------|
-| [Basic Player](examples/basic.html) | Simplest player with default DARK theme |
-| [Bar-Style Waveforms](examples/bars.html) | Customize bar width, gap, and radius |
-| [Gradient Colors](examples/gradients.html) | Gradient wave and progress colors |
-| [Timeline Plugin](examples/timeline.html) | Time markers below the waveform |
-| [Minimap Plugin](examples/minimap.html) | Miniature waveform overview |
-| [Spectrogram Plugin](examples/spectrogram.html) | Frequency spectrum visualization |
-| [Regions Plugin](examples/regions.html) | Highlight and annotate audio segments |
-| [Player Controls](examples/controls.html) | Play, time, volume, and rate controls |
-| [Grid Layout](examples/layout.html) | Multi-player comparison grids |
-| [Custom Theme](examples/custom_theme.html) | Fully customized visual theme |
-| [Built-in Themes](examples/themes.html) | DARK and LIGHT themes side by side |
+| [Basic Player](https://captivus.github.io/wavesurf/examples/basic.html) | Simplest player with default DARK theme |
+| [Bar-Style Waveforms](https://captivus.github.io/wavesurf/examples/bars.html) | Customize bar width, gap, and radius |
+| [Gradient Colors](https://captivus.github.io/wavesurf/examples/gradients.html) | Gradient wave and progress colors |
+| [Timeline Plugin](https://captivus.github.io/wavesurf/examples/timeline.html) | Time markers below the waveform |
+| [Minimap Plugin](https://captivus.github.io/wavesurf/examples/minimap.html) | Miniature waveform overview |
+| [Spectrogram Plugin](https://captivus.github.io/wavesurf/examples/spectrogram.html) | Frequency spectrum visualization |
+| [Regions Plugin](https://captivus.github.io/wavesurf/examples/regions.html) | Highlight and annotate audio segments |
+| [Player Controls](https://captivus.github.io/wavesurf/examples/controls.html) | Play, time, volume, and rate controls |
+| [Grid Layout](https://captivus.github.io/wavesurf/examples/layout.html) | Multi-player comparison grids |
+| [Custom Theme](https://captivus.github.io/wavesurf/examples/custom_theme.html) | Fully customized visual theme |
+| [Built-in Themes](https://captivus.github.io/wavesurf/examples/themes.html) | DARK and LIGHT themes side by side |
 
 Regenerate examples locally:
 
