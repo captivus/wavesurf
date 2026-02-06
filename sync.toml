@@ -1,0 +1,39 @@
+[upstream]
+# The wavesurfer.js version currently tracked by this wrapper.
+# Used to fetch source files and download the minified bundle.
+version = "7.12.1"
+
+# GitHub repository for fetching TypeScript source.
+repository = "katspaugh/wavesurfer.js"
+
+[options]
+# WaveSurferOptions fields intentionally excluded from the Python wrapper.
+# These are DOM-only or handled through other mechanisms.
+excluded = ["container", "media", "plugins", "peaks"]
+
+[events]
+# Events intentionally excluded from the Python wrapper.
+excluded = []
+
+[plugins]
+# "wrapped" plugins have factory methods in the Plugins class.
+wrapped = ["timeline", "minimap", "regions", "spectrogram"]
+
+# All upstream plugins — tracked for drift reporting even if not wrapped.
+all_upstream = [
+    "envelope",
+    "hover",
+    "minimap",
+    "record",
+    "regions",
+    "spectrogram",
+    "timeline",
+    "zoom",
+]
+
+[plugins.excluded_options]
+# Per-plugin options intentionally excluded (DOM-only, callback, etc.).
+timeline = ["container", "insertPosition", "formatTimeCallback"]
+minimap = ["container", "insertPosition"]
+spectrogram = ["container"]
+regions = []
