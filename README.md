@@ -4,7 +4,7 @@ A complete Python wrapper of [wavesurfer.js](https://wavesurfer.xyz/).
 
 [wavesurfer.js](https://wavesurfer.xyz/) is an open-source audio visualization library for building interactive, customizable waveform players. wavesurf brings its full power to Python -- pass a numpy array, torch tensor, file path, or URL and get a fully-featured audio player inline, complete with themes, plugins, custom controls, and event handlers. No JavaScript required.
 
-This implementation also includes widgets for use in Jupyter notebooks!
+This implementation also includes widgets for use in Jupyter notebooks, and a [detailed developer guide](docs/jupyter-widgets-dev-guide.ipynb) for implementing your own sexy Jupyter widgets using the library!
 
 ## Gallery
 
