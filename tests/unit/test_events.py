@@ -6,8 +6,8 @@ from wavesurf._events import EVENT_PARAMS, EventHandler
 
 
 class TestEventParams:
-    def test_all_22_events_defined(self):
-        assert len(EVENT_PARAMS) == 23  # 22 from API + timeupdate
+    def test_all_events_defined(self):
+        assert len(EVENT_PARAMS) == 24
 
     def test_ready_params(self):
         assert EVENT_PARAMS["ready"] == ["duration"]

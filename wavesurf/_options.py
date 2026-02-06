@@ -18,6 +18,7 @@ _SNAKE_TO_CAMEL: dict[str, str] = {
     "bar_align": "barAlign",
     "bar_gap": "barGap",
     "bar_height": "barHeight",
+    "bar_min_height": "barMinHeight",
     "bar_radius": "barRadius",
     "bar_width": "barWidth",
     "blob_mime_type": "blobMimeType",
@@ -33,6 +34,7 @@ _SNAKE_TO_CAMEL: dict[str, str] = {
     "hide_scrollbar": "hideScrollbar",
     "interact": "interact",
     "media_controls": "mediaControls",
+    "max_peak": "maxPeak",
     "min_px_per_sec": "minPxPerSec",
     "normalize": "normalize",
     "progress_color": "progressColor",
@@ -62,6 +64,7 @@ class WaveSurferOptions:
     bar_align: str | None = None
     bar_gap: int | None = None
     bar_height: float | None = None
+    bar_min_height: int | None = None
     bar_radius: int | None = None
     bar_width: int | None = None
     blob_mime_type: str | None = None
@@ -76,6 +79,7 @@ class WaveSurferOptions:
     hide_scrollbar: bool | None = None
     interact: bool | None = None
     media_controls: bool | None = None
+    max_peak: float | None = None
     min_px_per_sec: int | None = None
     normalize: bool | None = None
     progress_color: str | list[str] | None = None

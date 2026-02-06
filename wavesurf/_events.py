@@ -1,6 +1,6 @@
 """Event handler definitions for wavesurfer.js events.
 
-Provides an ``EventHandler`` dataclass and class methods for all 22
+Provides an ``EventHandler`` dataclass and class methods for all 24
 wavesurfer.js events.
 """
 
@@ -30,6 +30,7 @@ EVENT_PARAMS: dict[str, list[str]] = {
     "ready": ["duration"],
     "redraw": [],
     "redrawcomplete": [],
+    "resize": [],
     "scroll": ["visibleStartTime", "visibleEndTime", "scrollLeft", "scrollRight"],
     "seeking": ["currentTime"],
     "timeupdate": ["currentTime"],
@@ -139,6 +140,10 @@ class EventHandler:
     @classmethod
     def on_redrawcomplete(cls, js: str, *, once: bool = False) -> EventHandler:
         return cls(event="redrawcomplete", js=js, once=once)
+
+    @classmethod
+    def on_resize(cls, js: str, *, once: bool = False) -> EventHandler:
+        return cls(event="resize", js=js, once=once)
 
     @classmethod
     def on_scroll(cls, js: str, *, once: bool = False) -> EventHandler:
