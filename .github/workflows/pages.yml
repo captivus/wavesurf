@@ -4,6 +4,7 @@ on:
   push:
     branches: [master]
     paths:
+      - 'index.html'
       - 'examples/**'
       - 'docs/screenshots/**'
   workflow_dispatch:
