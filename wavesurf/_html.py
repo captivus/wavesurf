@@ -229,6 +229,13 @@ def wrap_in_iframe(
         f"{plugin_scripts}"
         "</head><body>"
         f"{body_html}"
+        "<script>"
+        "document.addEventListener('wheel',function(e){"
+        "window.parent.document.dispatchEvent(new WheelEvent('wheel',{"
+        "deltaX:-e.deltaX,deltaY:-e.deltaY,deltaMode:e.deltaMode,"
+        "bubbles:true,cancelable:true}));"
+        "},{passive:true});"
+        "</script>"
         "</body></html>"
     )
     escaped = html_module.escape(full_page, quote=True)
