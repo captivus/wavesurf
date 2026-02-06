@@ -45,16 +45,17 @@ dev = [
 ]
 
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["uv_build>=0.9.17,<0.10.0"]
+build-backend = "uv_build"
 
 [project.urls]
 Homepage = "https://github.com/captivus/wavesurf"
 Repository = "https://github.com/captivus/wavesurf"
 Issues = "https://github.com/captivus/wavesurf/issues"
 
+[tool.uv.build-backend]
+module-root = ""
+
 [tool.pytest.ini_options]
 addopts = "--browser chromium"
 
-[tool.hatch.build.targets.wheel]
-packages = ["wavesurf"]

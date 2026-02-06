@@ -26,6 +26,10 @@ Full control::
     player  # auto-displays via _repr_html_()
 """
 
+from importlib.metadata import version
+
+__version__ = version("wavesurf")
+
 from wavesurf._controls import Controls
 from wavesurf._core import WaveSurfer, compare_audio, display_audio
 from wavesurf._events import EventHandler
@@ -35,6 +39,7 @@ from wavesurf._plugins import PluginConfig, Plugins
 from wavesurf._theme import DARK, LIGHT, Theme, ThemeRegistry, themes
 
 __all__ = [
+    "__version__",
     # Core
     "WaveSurfer",
     "display_audio",
